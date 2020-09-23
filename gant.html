@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krzysztof Nyrek</title>
+    <link rel="stylesheet" href="css/gantt.css">
+</head>
+<body>
+    <div class="wraper">
+        <div id="naglowek">
+        <h1>Wykres Gantta</h1>
+        <table>
+            <tr>
+                <td>
+                    <select  id="sciezki">
+                        <option value="1">Ścieżka 1</option>
+                        <option value="2">Ścieżka 2</option>
+                        <option value="3">Ścieżka 3</option>
+                        <option value="4">Ścieżka 4</option>
+                        <option value="5">Ścieżka 5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="dodajZadanie()">Dodaj nowe zadanie</button>
+                </td>
+                <td>
+                    <input type="text" id="zadanie" placeholder="nowe zadanie">
+                </td>
+                <td>
+                    <select id="czas">
+                        <option value="1">1 dzień</option>
+                        <option value="2">2 dni</option>
+                        <option value="3">3 dni</option>
+                        <option value="4">4 dni</option>
+                        <option value="5">5 dni</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button>Dodaj osobę odpowiedzialną</button>
+                </td>
+                <td>
+                    <select id="listaOsob">
+                        <option value="1">Anna Nowak</option>
+                    </select>
+                </td>
+                <td>
+                    <button onclick="dodajOsobe()">Dodaj do listy osób</button>
+                </td>
+                <td>
+                    <input type="text" id="osoba" placeholder="nowa osoba">
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div id="kanwa">
+        <div id="kanwaZadan">
+            <div id="rulerPoziomy">
+                <div id="wskaznikStartu"></div>
+            </div>
+            
+            <div id="rulerPionowy">
+                <div id='wskaznikSciezki'></div>
+            </div>
+        </div>
+        <div id="kanwaOsob"></div>
+        </div>
+    </div>
+    <script src="js/oprogramowanie.js"></script>
+</body>
+
+</html>
