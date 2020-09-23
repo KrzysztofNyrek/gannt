@@ -58,7 +58,7 @@ function dodajZadanie(){
 
         //doklejanie kodu HTML kolejnych cegiełek zadań
         zadanie = zadanie.replace(/ /g, "&nbsp");
-        kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px;"></div>`;
+        kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px;"><p style="text-align: center;">${zadanie}</p></div>`;
         
             
         //operacje na wskaźniku startu
