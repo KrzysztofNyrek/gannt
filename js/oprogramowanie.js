@@ -4,6 +4,7 @@ var iloscZadan = 1;
 var leftValue = 20;
 var leftWskaznik = 12;
 
+
 //położenie wskaźnika ścieżki
 document.getElementById('sciezki').onchange = pozycjaSciezki;
 
@@ -24,6 +25,14 @@ function dodajOsobe(){
     
     return(iloscOsobProjekt);
 }
+function pozycjaWskaznika(event){
+    leftWskaznik=event.pageX - 28;
+    //operacje na wskaźniku startu
+    var start = document.getElementById('wskaznikStartu');
+    start.remove();
+    kanwaZadan.innerHTML += `<div id="wskaznikStartu" style="left:${leftWskaznik}px;"></div>`;
+    return(leftWskaznik);
+}
 function dodajZadanie(){
     //sprawdzenie pozycji scieżki
     var sciezka = document.getElementById('sciezki').value;
@@ -34,7 +43,6 @@ function dodajZadanie(){
     else{
         var kanwaZadan = document.getElementById('kanwaZadan');
         var zadanie = document.getElementById('zadanie').value;
-        var start = document.getElementById('wskaznikStartu');
         var iloscDni = document.getElementById('czas').value;
         var topValue = 20;
         var dlugoscCegielki = 140;
@@ -51,13 +59,11 @@ function dodajZadanie(){
         if (dlugoscCegielki + leftWskaznik > 720){
             alert("Więcej zadań nie zmieści się na kanwie");
         }
-        else{
-            //usuwanie kanwy zadań
-            start.remove();
-            console.log('przed obliczeniami',leftValue, leftWskaznik);
-            
+        else{            
+
             //doklejanie kodu HTML kolejnych cegiełek zadań
             zadanie = zadanie.replace(/ /g, "&nbsp");
+            leftValue = leftWskaznik + 6;
             kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px; width: ${dlugoscCegielki}px;"><p style="text-align: center;">${zadanie}</p></div>`;
             
             //liczenie pozycji startowej kolejnej cegiełki
@@ -66,9 +72,10 @@ function dodajZadanie(){
             //liczenie pozycji wskaźnika
             leftWskaznik = leftValue - 6;
             //operacje na wskaźniku startu
+            var start = document.getElementById('wskaznikStartu');
+            start.remove();
             kanwaZadan.innerHTML += `<div id="wskaznikStartu" style="left:${leftWskaznik}px;"></div>`;
 
-            console.log(leftValue, leftWskaznik);
             return(leftValue, leftWskaznik);
         }
     }  
