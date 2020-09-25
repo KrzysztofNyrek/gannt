@@ -1,6 +1,8 @@
 //zmienne
 var iloscOsobProjekt = 1;
 var iloscZadan = 1;
+var leftValue = 20;
+var leftWskaznik = 12;
 
 //położenie wskaźnika ścieżki
 document.getElementById('sciezki').onchange = pozycjaSciezki;
@@ -33,44 +35,43 @@ function dodajZadanie(){
         var kanwaZadan = document.getElementById('kanwaZadan');
         var zadanie = document.getElementById('zadanie').value;
         var start = document.getElementById('wskaznikStartu');
-
-        //var wskaznik = document.getElementById('wskaznikStartu');
+        var iloscDni = document.getElementById('czas').value;
         var topValue = 20;
-        var leftValue = 20;
-        var leftWskaznik = 12;
-
-        //liczenie pozycji startowej kolejnej cegiełki
-        if (iloscZadan > 1){
-            leftValue = 140 * (iloscZadan -1) + 20 + iloscZadan;
-        };
+        var dlugoscCegielki = 140;
     
-        //liczenie pozycji wskaźnika
-        if (iloscZadan >1){
-            leftWskaznik = leftValue - leftWskaznik + 5;
-        }
-            //liczenie pozycji wskaźnika startu
+        //liczenie pozycji wskaźnika startu
         if (sciezka > 1){
             topValue = 20 + (sciezka -1) * 80;
         };
 
-        //usuwanie kanwy zadań
-        start.remove();
+        //liczenie długości cegiełki
+        dlugoscCegielki = iloscDni * dlugoscCegielki;
 
-        //doklejanie kodu HTML kolejnych cegiełek zadań
-        zadanie = zadanie.replace(/ /g, "&nbsp");
-        kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px;"><p style="text-align: center;">${zadanie}</p></div>`;
-        
+        //zabezpieczenie przed umieszczaniem cegiełek poza kanwą
+        if (dlugoscCegielki + leftWskaznik > 720){
+            alert("Więcej zadań nie zmieści się na kanwie");
+        }
+        else{
+            //usuwanie kanwy zadań
+            start.remove();
+            console.log('przed obliczeniami',leftValue, leftWskaznik);
             
-        //operacje na wskaźniku startu
-        kanwaZadan.innerHTML += `<div id="wskaznikStartu" style="left:${leftWskaznik}px;"></div>`;
+            //doklejanie kodu HTML kolejnych cegiełek zadań
+            zadanie = zadanie.replace(/ /g, "&nbsp");
+            kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px; width: ${dlugoscCegielki}px;"><p style="text-align: center;">${zadanie}</p></div>`;
+            
+            //liczenie pozycji startowej kolejnej cegiełki
+            leftValue += dlugoscCegielki;
 
-        iloscZadan += 1;
-    }
+            //liczenie pozycji wskaźnika
+            leftWskaznik = leftValue - 6;
+            //operacje na wskaźniku startu
+            kanwaZadan.innerHTML += `<div id="wskaznikStartu" style="left:${leftWskaznik}px;"></div>`;
 
-    return(iloscZadan);
-    
-
-    
+            console.log(leftValue, leftWskaznik);
+            return(leftValue, leftWskaznik);
+        }
+    }  
 }
 function pozycjaSciezki(){
 
