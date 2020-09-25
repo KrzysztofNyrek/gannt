@@ -33,11 +33,13 @@ function dodajZadanie(){
         var kanwaZadan = document.getElementById('kanwaZadan');
         var zadanie = document.getElementById('zadanie').value;
         var start = document.getElementById('wskaznikStartu');
+        var iloscDni = document.getElementById('czas').value;
 
         //var wskaznik = document.getElementById('wskaznikStartu');
         var topValue = 20;
         var leftValue = 20;
         var leftWskaznik = 12;
+        var dlugoscCegielki = 140;
 
         //liczenie pozycji startowej kolejnej cegiełki
         if (iloscZadan > 1){
@@ -53,12 +55,15 @@ function dodajZadanie(){
             topValue = 20 + (sciezka -1) * 80;
         };
 
+        //liczenie długości cegiełki
+        dlugoscCegielki = iloscDni * dlugoscCegielki;
+
         //usuwanie kanwy zadań
         start.remove();
 
         //doklejanie kodu HTML kolejnych cegiełek zadań
         zadanie = zadanie.replace(/ /g, "&nbsp");
-        kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px;"><p style="text-align: center;">${zadanie}</p></div>`;
+        kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px; width: ${dlugoscCegielki}px;"><p style="text-align: center;">${zadanie}</p></div>`;
         
             
         //operacje na wskaźniku startu
