@@ -58,21 +58,28 @@ function dodajZadanie(){
         //liczenie długości cegiełki
         dlugoscCegielki = iloscDni * dlugoscCegielki;
 
-        //usuwanie kanwy zadań
-        start.remove();
+        //zabezpieczenie przed umieszczaniem cegiełek poza kanwą
+        if (dlugoscCegielki + leftWskaznik > 720){
+            alert("Więcej zadań nie zmieści się na kanwie");
+        }
+        else{
+            //usuwanie kanwy zadań
+            start.remove();
 
-        //doklejanie kodu HTML kolejnych cegiełek zadań
-        zadanie = zadanie.replace(/ /g, "&nbsp");
-        kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px; width: ${dlugoscCegielki}px;"><p style="text-align: center;">${zadanie}</p></div>`;
+            //doklejanie kodu HTML kolejnych cegiełek zadań
+            zadanie = zadanie.replace(/ /g, "&nbsp");
+            kanwaZadan.innerHTML += `<div id="cegielka" style="top: ${topValue}px; left: ${leftValue}px; width: ${dlugoscCegielki}px;"><p style="text-align: center;">${zadanie}</p></div>`;
+
+                
+            //operacje na wskaźniku startu
+            kanwaZadan.innerHTML += `<div id="wskaznikStartu" style="left:${leftWskaznik}px;"></div>`;
+
+            iloscZadan += 1;
+            }
+
+            return(iloscZadan);
+        }
         
-            
-        //operacje na wskaźniku startu
-        kanwaZadan.innerHTML += `<div id="wskaznikStartu" style="left:${leftWskaznik}px;"></div>`;
-
-        iloscZadan += 1;
-    }
-
-    return(iloscZadan);
     
 
     
