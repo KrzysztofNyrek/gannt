@@ -65,3 +65,39 @@ h1{
     border-radius: 4px;
     margin:2px;
 }
+#l_pozioma_1{
+    position: absolute;
+    top: 102px;
+    left: 20px;
+    width: 708px;
+    height: 1px;
+    background-color: black;
+    z-index: 1;
+}
+#l_pozioma_2{
+    position: absolute;
+    top: 182px;
+    left: 20px;
+    width: 708px;
+    height: 1px;
+    background-color: black;
+    z-index: 1;
+}
+#l_pozioma_3{
+    position: absolute;
+    top: 262px;
+    left: 20px;
+    width: 708px;
+    height: 1px;
+    background-color: black;
+    z-index: 1;
+}
+#l_pozioma_4{
+    position: absolute;
+    top: 342px;
+    left: 20px;
+    width: 708px;
+    height: 1px;
+    background-color: black;
+    z-index: 1;
+}
