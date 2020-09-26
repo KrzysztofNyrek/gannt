@@ -101,3 +101,39 @@ h1{
     background-color: black;
     z-index: 1;
 }
+#l_pionowa_1{
+    position: absolute;
+    top: 22px;
+    left: 160px;
+    width: 1px;
+    height: 400px;
+    background-color: black;
+    z-index: 2;
+}
+#l_pionowa_2{
+    position: absolute;
+    top: 22px;
+    left: 300px;
+    width: 1px;
+    height: 400px;
+    background-color: black;
+    z-index: 2;
+}
+#l_pionowa_3{
+    position: absolute;
+    top: 22px;
+    left: 440px;
+    width: 1px;
+    height: 400px;
+    background-color: black;
+    z-index: 2;
+}
+#l_pionowa_4{
+    position: absolute;
+    top: 22px;
+    left: 580px;
+    width: 1px;
+    height: 400px;
+    background-color: black;
+    z-index: 2;
+}
