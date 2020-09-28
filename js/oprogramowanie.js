@@ -102,6 +102,7 @@ function pozycjaSciezki(){
 function dodajOdpowiedzialnego(){
     var sciezka = document.getElementById('sciezki').value;
     var kanwaZadan = document.getElementById('kanwaZadan');
+    var iloscOsobProjekt = document.getElementById('listaOsob').value;
     var topValue = 55;
     var leftValue = 750;
 
@@ -110,5 +111,9 @@ function dodajOdpowiedzialnego(){
         topValue = 55 + (sciezka -1) * 80;
     };
     //ododawanie kółka odpowiedzialności
+    if (iloscOsobProjekt > 1){
+        leftValue = 750 + (iloscOsobProjekt - 1) * 40;
+
+    }
     kanwaZadan.innerHTML += `<div id="kolko" style="top:${topValue}px; left:${leftValue}px;"></div>`;
 }
