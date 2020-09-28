@@ -12,19 +12,22 @@ var kanwaZadan = document.getElementById('kanwaZadan');
 kanwaZadan.innerHTML += "<div id='l_pozioma_1'></div><div id='l_pozioma_2'></div><div id='l_pozioma_3'></div><div id='l_pozioma_4'></div><div id='l_pionowa_1'></div><div id='l_pionowa_2'></div><div id='l_pionowa_3'></div><div id='l_pionowa_4'></div>"
 //funkcje
 function dodajOsobe(){
-    var osoba = document.getElementById('osoba').value;
-    var lista = document.getElementById('listaOsob');
-    var opcja = document.createElement('option');
-
-    if (osoba != ""){
-        iloscOsobProjekt += 1;
-        opcja.text = osoba;
-        opcja.value = iloscOsobProjekt;
-        lista.appendChild(opcja);
-    }else{
-        alert("Proszę podać imię i nazwisko osoby, która ma być dodana do listy.");
-    }
+    if (iloscOsobProjekt >= 5){
+        alert("W ten projekt może być zaangazowane maksymalnie 5 osób");
+    }else {
+        var osoba = document.getElementById('osoba').value;
+        var lista = document.getElementById('listaOsob');
+        var opcja = document.createElement('option');
     
+        if (osoba != ""){
+            iloscOsobProjekt += 1;
+            opcja.text = osoba;
+            opcja.value = iloscOsobProjekt;
+            lista.appendChild(opcja);
+        }else{
+            alert("Proszę podać imię i nazwisko osoby, która ma być dodana do listy.");
+        }
+    }
     return(iloscOsobProjekt);
 }
 function pozycjaWskaznika(event){
