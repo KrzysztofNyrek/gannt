@@ -105,17 +105,34 @@ function pozycjaSciezki(){
 function dodajOdpowiedzialnego(){
     var sciezka = document.getElementById('sciezki').value;
     var kanwaZadan = document.getElementById('kanwaZadan');
+    var osobaOdpowiedzialna = document.getElementById('listaOsob').value;
     var topValue = 55;
     var leftValue = 750;
+    var kolorKolka = "darkblue";
 
     //liczenie pozycji wskaźnika startu
     if (sciezka > 1){
         topValue = 55 + (sciezka -1) * 80;
     };
-    //ododawanie kółka odpowiedzialności
-    if (iloscOsobProjekt > 1){
-        leftValue = 750 + (iloscOsobProjekt - 1) * 40;
+    //dodawanie kółka odpowiedzialności
+    if (osobaOdpowiedzialna > 1){
+        leftValue = 750 + (osobaOdpowiedzialna - 1) * 40;
 
     }
-    kanwaZadan.innerHTML += `<div id="kolko" style="top:${topValue}px; left:${leftValue}px;"></div>`;
+    //ustalenie koloru kółka
+    switch (osobaOdpowiedzialna){
+        case "2":
+            kolorKolka = "pink";
+            break;
+        case "3":
+            kolorKolka = "yellow";
+            break;
+        case "4":
+            kolorKolka = "green";
+            break;
+        case "5":
+            kolorKolka = "red";
+            break;
+    }
+    kanwaZadan.innerHTML += `<div id="kolko" style="top:${topValue}px; left:${leftValue}px; background-color:${kolorKolka};"></div>`;
 }
