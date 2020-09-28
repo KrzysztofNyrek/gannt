@@ -28,7 +28,7 @@ function dodajOsobe(){
     return(iloscOsobProjekt);
 }
 function pozycjaWskaznika(event){
-    leftWskaznik=event.pageX - 28;
+    leftWskaznik=event.pageX -20;
     //operacje na wskaźniku startu
     var start = document.getElementById('wskaznikStartu');
     start.remove();
@@ -98,4 +98,17 @@ function pozycjaSciezki(){
 
     //operacje na wskaźniku scieżki
     kanwaZadan.innerHTML += `<div id="wskaznikSciezki" style="top:${topValue}px;"></div>`;
+}
+function dodajOdpowiedzialnego(){
+    var sciezka = document.getElementById('sciezki').value;
+    var kanwaZadan = document.getElementById('kanwaZadan');
+    var topValue = 55;
+    var leftValue = 750;
+
+    //liczenie pozycji wskaźnika startu
+    if (sciezka > 1){
+        topValue = 55 + (sciezka -1) * 80;
+    };
+    //ododawanie kółka odpowiedzialności
+    kanwaZadan.innerHTML += `<div id="kolko" style="top:${topValue}px; left:${leftValue}px;"></div>`;
 }
