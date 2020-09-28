@@ -12,23 +12,26 @@ var kanwaZadan = document.getElementById('kanwaZadan');
 kanwaZadan.innerHTML += "<div id='l_pozioma_1'></div><div id='l_pozioma_2'></div><div id='l_pozioma_3'></div><div id='l_pozioma_4'></div><div id='l_pionowa_1'></div><div id='l_pionowa_2'></div><div id='l_pionowa_3'></div><div id='l_pionowa_4'></div>"
 //funkcje
 function dodajOsobe(){
-    var osoba = document.getElementById('osoba').value;
-    var lista = document.getElementById('listaOsob');
-    var opcja = document.createElement('option');
-
-    if (osoba != ""){
-        iloscOsobProjekt += 1;
-        opcja.text = osoba;
-        opcja.value = iloscOsobProjekt;
-        lista.appendChild(opcja);
-    }else{
-        alert("Proszę podać imię i nazwisko osoby, która ma być dodana do listy.");
-    }
+    if (iloscOsobProjekt >= 5){
+        alert("W ten projekt może być zaangazowane maksymalnie 5 osób");
+    }else {
+        var osoba = document.getElementById('osoba').value;
+        var lista = document.getElementById('listaOsob');
+        var opcja = document.createElement('option');
     
+        if (osoba != ""){
+            iloscOsobProjekt += 1;
+            opcja.text = osoba;
+            opcja.value = iloscOsobProjekt;
+            lista.appendChild(opcja);
+        }else{
+            alert("Proszę podać imię i nazwisko osoby, która ma być dodana do listy.");
+        }
+    }
     return(iloscOsobProjekt);
 }
 function pozycjaWskaznika(event){
-    leftWskaznik=event.pageX - 28;
+    leftWskaznik=event.pageX -20;
     //operacje na wskaźniku startu
     var start = document.getElementById('wskaznikStartu');
     start.remove();
@@ -98,4 +101,38 @@ function pozycjaSciezki(){
 
     //operacje na wskaźniku scieżki
     kanwaZadan.innerHTML += `<div id="wskaznikSciezki" style="top:${topValue}px;"></div>`;
+}
+function dodajOdpowiedzialnego(){
+    var sciezka = document.getElementById('sciezki').value;
+    var kanwaZadan = document.getElementById('kanwaZadan');
+    var osobaOdpowiedzialna = document.getElementById('listaOsob').value;
+    var topValue = 55;
+    var leftValue = 750;
+    var kolorKolka = "darkblue";
+
+    //liczenie pozycji wskaźnika startu
+    if (sciezka > 1){
+        topValue = 55 + (sciezka -1) * 80;
+    };
+    //dodawanie kółka odpowiedzialności
+    if (osobaOdpowiedzialna > 1){
+        leftValue = 750 + (osobaOdpowiedzialna - 1) * 40;
+
+    }
+    //ustalenie koloru kółka
+    switch (osobaOdpowiedzialna){
+        case "2":
+            kolorKolka = "pink";
+            break;
+        case "3":
+            kolorKolka = "yellow";
+            break;
+        case "4":
+            kolorKolka = "green";
+            break;
+        case "5":
+            kolorKolka = "red";
+            break;
+    }
+    kanwaZadan.innerHTML += `<div id="kolko" style="top:${topValue}px; left:${leftValue}px; background-color:${kolorKolka};"></div>`;
 }

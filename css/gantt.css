@@ -137,3 +137,9 @@ h1{
     background-color: black;
     z-index: 2;
 }
+#kolko{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
