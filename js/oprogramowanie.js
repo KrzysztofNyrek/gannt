@@ -105,7 +105,6 @@ function pozycjaSciezki(){
 function dodajOdpowiedzialnego(){
     var sciezka = document.getElementById('sciezki').value;
     var kanwaZadan = document.getElementById('kanwaZadan');
-    var iloscOsobProjekt = document.getElementById('listaOsob').value;
     var topValue = 55;
     var leftValue = 750;
 
